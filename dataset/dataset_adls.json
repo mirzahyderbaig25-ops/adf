@@ -1,10 +1,6 @@
 {
 	"name": "dataset_adls",
 	"properties": {
-		"linkedServiceName": {
-			"referenceName": "linked_adls",
-			"type": "LinkedServiceReference"
-		},
 		"parameters": {
 			"dataset_container": {
 				"type": "string"
