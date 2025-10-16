@@ -21,9 +21,13 @@
 						"partitionOption": "None"
 					},
 					"sink": {
-						"type": "AzureSqlSink",
-						"writeBehavior": "insert",
-						"sqlWriterUseTableLock": false
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "ParquetWriteSettings"
+						}
 					},
 					"enableStaging": false,
 					"translator": {
@@ -43,12 +47,30 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "dataset_azure_sql",
-						"type": "DatasetReference"
+						"referenceName": "dataset_adls",
+						"type": "DatasetReference",
+						"parameters": {
+							"dataset_container": {
+								"value": "@pipeline().parameters.pipeline_container",
+								"type": "Expression"
+							},
+							"dataset_filename": {
+								"value": "@pipeline().parameters.pipeline_file",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
 		],
+		"parameters": {
+			"pipeline_container": {
+				"type": "string"
+			},
+			"pipeline_file": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }

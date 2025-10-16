@@ -1,0 +1,35 @@
+{
+	"name": "dataset_adls",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linked_adls",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"dataset_container": {
+				"type": "string"
+			},
+			"dataset_filename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().dataset_filename",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().dataset_container",
+					"type": "Expression"
+				},
+				"fileSystem": "bronze"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
