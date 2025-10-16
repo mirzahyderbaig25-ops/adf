@@ -1,0 +1,15 @@
+{
+	"name": "linked_azure_sql",
+	"properties": {
+		"description": "linked service connected to azure sql ",
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "sql-server-dem.database.windows.net",
+			"database": "test_db",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SystemAssignedManagedIdentity"
+		}
+	}
+}
